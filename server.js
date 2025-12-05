@@ -9,16 +9,28 @@ import orderRoutes from './routes/order.js';
 dotenv.config();
 const app = express();
 
-app.use(cors());
+// ======================= CORS CONFIG ========================
+app.use(cors({
+  origin: "*",   // allow all domains
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
+// If you want credentials support later add:
+// app.use(cors({ origin: true, credentials: true }));
+
+// ============================================================
+
 app.use(express.json());
 
-// Routes
+// ======================= ROUTES =============================
 app.use('/api/auth', authRoutes);
 app.use('/api/food', foodRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
+// ============================================================
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`DineDrop Backend running on http://localhost:${PORT}`);
+  console.log(`DineDrop Backend running on port ${PORT}`);
 });
