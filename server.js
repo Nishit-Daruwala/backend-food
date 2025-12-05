@@ -9,11 +9,7 @@ import orderRoutes from './routes/order.js';
 dotenv.config();
 const app = express();
 
-app.use(cors({
-    origin: ["https://69327055e8aec7373b540d1d--dashing-kleicha-e614e5.netlify.app/"],  // <-- add your frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 
 // Routes
