@@ -10,8 +10,9 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
+    origin: ["https://your-netlify-domain.netlify.app"],  // <-- add your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
 }));
 app.use(express.json());
 
